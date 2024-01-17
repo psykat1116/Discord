@@ -28,7 +28,7 @@ model Server {
   id         String    @id @default(uuid())
   name       String
   imageUrl   String    @db.Text
-  inviteCode String    @db.Text
+  inviteCode String    @unique
   profileId  String
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @updatedAt
