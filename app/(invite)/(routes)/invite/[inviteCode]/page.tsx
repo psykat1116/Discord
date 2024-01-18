@@ -1,6 +1,6 @@
 import { currentProfile } from "@/lib/currentProfile";
 import { db } from "@/lib/db";
-import { redirectToSignIn } from "@clerk/nextjs";
+import { RedirectToSignIn } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 import React from "react";
 
@@ -12,7 +12,9 @@ interface InvitePageProps {
 
 const Page: React.FC<InvitePageProps> = async ({ params }) => {
   const profile = await currentProfile();
-  if (!profile) return redirectToSignIn();
+  if (!profile) {
+    return <RedirectToSignIn />;
+  }
   if (!params.inviteCode) {
     return redirect("/");
   }
@@ -47,7 +49,7 @@ const Page: React.FC<InvitePageProps> = async ({ params }) => {
     },
   });
 
-  if(server){
+  if (server) {
     return redirect(`/servers/${server.id}`);
   }
 
