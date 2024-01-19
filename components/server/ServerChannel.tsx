@@ -5,7 +5,7 @@ import { Edit, Hash, Lock, Mic, Trash, Video } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 import React from "react";
 import ToolTipAction from "../ToolTipAction";
-import useModal from "@/hooks/useModal";
+import useModal, { ModalType } from "@/hooks/useModal";
 
 interface ServerChannelProps {
   channel: Channel;
@@ -28,9 +28,19 @@ const ServerChannel: React.FC<ServerChannelProps> = ({
   const params = useParams();
   const router = useRouter();
   const Icon = iconMap[channel.type];
+
+  const onClick = () => {
+    router.push(`/servers/${params?.serverId}/channels/${channel.id}`);
+  };
+
+  const onAction = (e: React.MouseEvent, action: ModalType) => {
+    e.stopPropagation();
+    onOpen(action, { channel, server });
+  };
+
   return (
     <button
-      onClick={() => {}}
+      onClick={onClick}
       className={cn(
         "group px-2 py-2 rounded-md flex items-center gap-x-2 w-full hover:bg-zinc-700/10 dark:hover:bg-zinc-700/50 transition mb-1",
         params?.channelId === channel.id && "bg-zinc-700/20 dark:bg-zinc-700"
@@ -50,15 +60,15 @@ const ServerChannel: React.FC<ServerChannelProps> = ({
         <div className="ml-auto flex items-center gap-x-2">
           <ToolTipAction label="Edit">
             <Edit
-              onClick={() => {
-                onOpen("editChannel", { channel, server });
+              onClick={(e) => {
+                onAction(e, "editChannel");
               }}
               className="hidden group-hover:block w-3.5 h-3.5 text-zinc-500 hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-300 transition"
             />
           </ToolTipAction>
           <ToolTipAction label="Delete">
             <Trash
-              onClick={() => onOpen("deleteChannel", { channel, server })}
+              onClick={(e) => onAction(e, "deleteChannel")}
               className="hidden group-hover:block w-3.5 h-3.5 text-zinc-500 hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-300 transition"
             />
           </ToolTipAction>
