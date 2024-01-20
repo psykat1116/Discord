@@ -4,6 +4,7 @@ import { db } from "@/lib/db";
 import React from "react";
 import { redirect } from "next/navigation";
 import ChatHeader from "@/components/chat/ChatHeader";
+import ChatInput from "@/components/chat/ChatInput";
 
 interface PageProps {
   params: {
@@ -35,6 +36,13 @@ const Page = async ({ params }: PageProps) => {
         name={channel.name}
         serverId={channel.serverId}
         type="channel"
+      />
+      <div className="flex-1">Future Messages</div>
+      <ChatInput
+        name={channel.name}
+        type="channel"
+        apiUrl="/api/socket/messages"
+        query={{ serverId: channel.serverId, channelId: channel.id }}
       />
     </div>
   );

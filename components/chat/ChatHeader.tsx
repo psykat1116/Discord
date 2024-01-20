@@ -2,6 +2,7 @@ import React from "react";
 import { Hash } from "lucide-react";
 import MobileToggle from "../MobileToggle";
 import UserAvatar from "../UserAvatar";
+import SocketIndicator from "../SocketIndicator";
 
 interface ChatHeaderProps {
   serverId: string;
@@ -22,10 +23,16 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
       {type === "channel" && (
         <Hash className="mx-2 w-4 h-4 text-zinc-500 dark:text-zinc-400" />
       )}
-      {type === 'conversation' && (
-        <UserAvatar src={imageUrl} className="mr-2 h-8 w-8 md:h-8 md:w-8 object-cover"/>
+      {type === "conversation" && (
+        <UserAvatar
+          src={imageUrl}
+          className="mr-2 h-8 w-8 md:h-8 md:w-8 object-cover"
+        />
       )}
       <p className="font-semibold text-md text-black dark:text-white">{name}</p>
+      <div className="ml-auto flex items-center">
+        <SocketIndicator />
+      </div>
     </div>
   );
 };
