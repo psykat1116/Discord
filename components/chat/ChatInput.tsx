@@ -1,11 +1,14 @@
 "use client";
-import React from "react";
+import React, { use } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Plus, Smile } from "lucide-react";
+import axios from "axios";
+import qs from "query-string";
+import useModal from "@/hooks/useModal";
 
 interface ChatInputProps {
   apiUrl: string;
@@ -16,12 +19,15 @@ interface ChatInputProps {
 
 const formSchema = z.object({
   content: z.string().min(1),
+  fileUrl: z.string().optional(),
 });
 
 const ChatInput: React.FC<ChatInputProps> = ({ apiUrl, query, name, type }) => {
+  const { onOpen } = useModal();
   const form = useForm<z.infer<typeof formSchema>>({
     defaultValues: {
       content: "",
+      fileUrl: "",
     },
     resolver: zodResolver(formSchema),
   });
@@ -29,7 +35,15 @@ const ChatInput: React.FC<ChatInputProps> = ({ apiUrl, query, name, type }) => {
   const isLoading = form.formState.isSubmitting;
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
-    console.log(data);
+    try {
+      const url = qs.stringifyUrl({
+        url: "/api/socket/messages",
+        query,
+      });
+      await axios.post(url, data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -44,7 +58,7 @@ const ChatInput: React.FC<ChatInputProps> = ({ apiUrl, query, name, type }) => {
                 <div className="relative p-4 pb-6">
                   <button
                     type="button"
-                    onClick={() => {}}
+                    onClick={() => onOpen("messageFile", { apiUrl, query })}
                     className="absolute top-7 left-8 h-[24px] w-[24px] bg-zinc-500 dark:bg-zinc-400 hover:bg-zinc-600 dark:hover:bg-zinc-300 transition p-1 flex rounded-full justify-center items-center"
                   >
                     <Plus className="text-white dark:text-[#323338]" />
