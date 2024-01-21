@@ -88,7 +88,7 @@ const EditChannel = () => {
 
   return (
     <Dialog open={isModalOpen} onOpenChange={handleClose}>
-      <DialogContent className="bg-white text-black p-0 overflow-hidden">
+      <DialogContent className="bg-white dark:bg-[#1e1f22] text-black dark:text-white p-0 overflow-hidden">
         <DialogHeader className="pt-8 px-6">
           <DialogTitle className="text-2xl text-center font-bold">
             Edit Channel
@@ -102,13 +102,13 @@ const EditChannel = () => {
                 name="name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="uppercase text-xs font-bold text-zinc-500 dark:text-secondary/70">
+                    <FormLabel className="uppercase text-xs font-bold text-zinc-800 dark:text-zinc-400">
                       Channel Name
                     </FormLabel>
                     <FormControl>
                       <Input
                         disabled={isLoading}
-                        className="bg-zinc-300/50 border-0 focus-visible:ring-0 text-black focus-visible:ring-offset-0"
+                        className="bg-zinc-300/50 dark:bg-zinc-900 border-0 focus-visible:ring-0 text-black dark:text-white focus-visible:ring-offset-0"
                         placeholder="Enter Channel name"
                         {...field}
                       />
@@ -122,14 +122,14 @@ const EditChannel = () => {
                 name="type"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Channel Type</FormLabel>
+                    <FormLabel className="uppercase text-xs font-bold text-zinc-800 dark:text-zinc-400">Channel Type</FormLabel>
                     <Select
                       disabled={isLoading}
                       onValueChange={field.onChange}
                       defaultValue={field.value}
                     >
                       <FormControl>
-                        <SelectTrigger className="bg-zinc-300/50 border-0 focus:ring-0 text-black ring-offset-0 capitalize focus:ring-offset-0 outline-none">
+                        <SelectTrigger className="bg-zinc-300/50 dark:bg-zinc-900 border-0 focus:ring-0 text-black dark:text-white ring-offset-0 capitalize focus:ring-offset-0 outline-none">
                           <SelectValue placeholder="Select a channel type" />
                         </SelectTrigger>
                       </FormControl>
@@ -148,7 +148,7 @@ const EditChannel = () => {
                 )}
               />
             </div>
-            <DialogFooter className="bg-gray-100 px-6 py-4">
+            <DialogFooter className="bg-gray-100 dark:bg-[#383338] px-6 py-4">
               <Button disabled={isLoading} variant="primary">
                 Save
               </Button>

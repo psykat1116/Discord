@@ -39,6 +39,7 @@ import UserAvatar from "../UserAvatar";
 import { MemberRole } from "@prisma/client";
 import qs from "query-string";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const roleIconMap = {
   GUEST: null,
@@ -93,20 +94,27 @@ const MemberModal = () => {
 
   return (
     <Dialog open={isModalOpen} onOpenChange={onClose}>
-      <DialogContent className="bg-white text-black overflow-hidden">
-        <DialogHeader className="pt-8 px-6">
-          <DialogTitle className="text-2xl text-center font-bold">
+      <DialogContent className="bg-white dark:bg-[#1e1f22] text-black dark:text-white overflow-hidden">
+        <DialogHeader className="pt-4 px-2">
+          <DialogTitle className="text-2xl text-left font-bold">
+            <Image
+              src="/logo.png"
+              alt="logo"
+              width={50}
+              height={50}
+              className="object-cover mb-2"
+            />
             Manage Members
           </DialogTitle>
-          <DialogDescription className="text-center text-zinc-500">
+          <DialogDescription className="text-left text-zinc-500">
             {server?.members?.length} Members
           </DialogDescription>
         </DialogHeader>
-        <ScrollArea className="mt-8 max-h-[420px] pr-6">
+        <ScrollArea className="mt-4 max-h-[420px] pr-6">
           {server?.members?.map((member) => {
             return (
               <div key={member.id} className="flex items-center gap-x-2 mb-6">
-                <UserAvatar src={member.profile.imageUrl}/>
+                <UserAvatar src={member.profile.imageUrl} />
                 <div className="flex flex-col gap-y-1">
                   <div className="text-xs font-semibold flex items-center gap-x-1">
                     {member.profile.name}
@@ -139,7 +147,7 @@ const MemberModal = () => {
                                   <Shield className="h-4 w-4 mr-2" />
                                   Guest
                                   {member.role === "GUEST" && (
-                                    <Check className="h-4 w-4 text-green-600 ml-auto" />
+                                    <Check className="h-4 w-4 text-green-600 ml-2" />
                                   )}
                                 </DropdownMenuItem>
                                 <DropdownMenuItem
@@ -150,7 +158,7 @@ const MemberModal = () => {
                                   <ShieldCheck className="h-4 w-4 mr-2" />
                                   Moderator
                                   {member.role === "MODERATOR" && (
-                                    <Check className="h-4 w-4 text-green-600 ml-auto" />
+                                    <Check className="h-4 w-4 text-green-600 ml-2" />
                                   )}
                                 </DropdownMenuItem>
                               </DropdownMenuSubContent>

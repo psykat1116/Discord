@@ -1,3 +1,4 @@
+import InviteBox from "@/components/InviteBox";
 import { currentProfile } from "@/lib/currentProfile";
 import { db } from "@/lib/db";
 import { RedirectToSignIn } from "@clerk/nextjs";
@@ -34,26 +35,27 @@ const Page: React.FC<InvitePageProps> = async ({ params }) => {
     return redirect(`/servers/${existingServer.id}`);
   }
 
-  const server = await db.server.update({
+  const serverData = await db.server.findFirst({
     where: {
       inviteCode: params.inviteCode,
     },
-    data: {
-      members: {
-        create: [
-          {
-            profileId: profile.id,
-          },
-        ],
-      },
-    },
+    include: {
+      profile: true,
+    }
   });
 
-  if (server) {
-    return redirect(`/servers/${server.id}`);
+  if (!serverData) {
+    return redirect("/");
   }
 
-  return null;
+  return (
+    <div className="w-full h-full flex items-center justify-center bg-[url('/Background.png')] bg-cover bg-center bg-no-repeat">
+      <InviteBox
+        profile={profile}
+        serverData={serverData}
+      />
+    </div>
+  );
 };
 
 export default Page;

@@ -65,6 +65,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
       onUploadError={(error: Error) => {
         console.log(error);
       }}
+      className="border-dashed border-2 border-gray-300 dark:border-gray-700 rounded-md p-4 flex flex-col items-center justify-center text-center cursor-pointer hover:border-gray-400 dark:hover:border-gray-600 transition-colors"
     ></UploadDropzone>
   );
 };

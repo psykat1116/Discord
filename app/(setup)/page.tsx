@@ -18,7 +18,11 @@ const Page = async () => {
   if (server) {
     return redirect(`/servers/${server.id}`);
   }
-  return <InitialModal/>;
+  return (
+    <div className="h-full w-full flex justify-center items-center bg-[url('/Background.png')] bg-no-repeat bg-cover bg-center">
+      <InitialModal />
+    </div>
+  );
 };
 
 export default Page;

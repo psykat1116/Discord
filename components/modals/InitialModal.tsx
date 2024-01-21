@@ -24,6 +24,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import FileUpload from "../FileUpload";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const formSchema = z.object({
   name: z.string().min(1, { message: "Server name is required" }),
@@ -62,12 +63,13 @@ const InitialModal = () => {
 
   return (
     <Dialog open>
-      <DialogContent className="bg-white text-black p-0 overflow-hidden">
+      <DialogContent className="bg-white text-black p-0 overflow-hidden w-full sm:w-auto max-sm:h-full">
         <DialogHeader className="pt-8 px-6">
-          <DialogTitle className="text-2xl text-center font-bold">
-            Customize Your Server
+          <DialogTitle className="text-[22px] text-left font-bold">
+            <Image src="/logo.png" alt="logo" width={50} height={50} className="object-cover mb-2"/>
+            Customize Your <span className="text-indigo-500">Discord</span> Server
           </DialogTitle>
-          <DialogDescription className="text-center text-zinc-500">
+          <DialogDescription className="text-left text-zinc-500">
             Give Your Server a personality with a name and image. You can change
             it later.
           </DialogDescription>
