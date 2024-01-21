@@ -40,7 +40,7 @@ const ChatInput: React.FC<ChatInputProps> = ({ apiUrl, query, name, type }) => {
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
       const url = qs.stringifyUrl({
-        url: "/api/socket/messages",
+        url: apiUrl,
         query,
       });
       await axios.post(url, data);
