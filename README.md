@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1>Fullstack Discord Website Clone Made Using Next JS, Tailwind CSS, Typescript, MySQL, Prisma, Shadcn-ui, Clerk, Uploading, Socket IO and Much More. </h1>
 
-## Getting Started
+<h3>!!! --- As WebSocket does not work on Vercel We Hosted It in <a href="https://railway.app/" target="_blank">Railway</a>. But Next/Image Component Does Not Work In Railway So We Use Native <img> Tag. --- !!!</h3>
 
-First, run the development server:
-
+## Cloning the repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/psykat1116/Discord.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Important: Change The File Name To Lowercase & Start The File
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Install Package
+```bash
+cd <your given file name>
+npm i
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Setup .env File
+```bash
+DATABASE_URL=
 
-## Learn More
+//Upload Images Into Uploadthing
+UPLOADTHING_SECRET=
+UPLOADTHING_APP_ID=
 
-To learn more about Next.js, take a look at the following resources:
+// For Initialization Of Clerk Authentication
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+CLERK_SECRET_KEY=
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=
+NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=
+NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+// For Live Video Streaming
+LIVEKIT_API_KEY=
+LIVEKIT_API_SECRET=
+NEXT_PUBLIC_LIVEKIT_URL=
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Setup Prisma ORM
+ADD Your MYSQL DataBase URL To env. I use [Planetscale](https://planetscale.com/) as my database.
+```bash
+npx prisma generate
+npx prisma db push
+```
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Start the app
+```bash
+npm run dev
+```
