@@ -83,7 +83,7 @@ const ChatItem: React.FC<ChatItemProps> = ({
     };
     window.addEventListener("keydown", handleKeyDOwn);
     return () => window.removeEventListener("keydown", handleKeyDOwn);
-  }, []);
+  }, [form]);
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
