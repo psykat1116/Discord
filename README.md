@@ -2,6 +2,8 @@
 
 <h3>!!! --- As WebSocket does not work on Vercel We Hosted It in <a href="https://railway.app/" target="_blank">Railway</a>. But Next/Image Component Does Not Work In Railway So We Use Native <img> Tag. --- !!!</h3>
 
+<h4>Main Project Credit Goes To <a href="https://www.youtube.com/@codewithantonio">Code With Antonio</a>. Great Project Video & Explanation.</h4>
+
 ## Cloning the repository
 ```bash
 git clone https://github.com/psykat1116/Discord.git
