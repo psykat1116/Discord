@@ -66,8 +66,15 @@ const InitialModal = () => {
       <DialogContent className="bg-white text-black p-0 overflow-hidden w-full sm:w-auto max-sm:h-full">
         <DialogHeader className="pt-8 px-6">
           <DialogTitle className="text-[22px] text-left font-bold">
-            <Image src="/logo.png" alt="logo" width={50} height={50} className="object-cover mb-2"/>
-            Customize Your <span className="text-indigo-500">Discord</span> Server
+            <img
+              src="/logo.png"
+              alt="logo"
+              width={50}
+              height={50}
+              className="object-cover mb-2"
+            />
+            Customize Your <span className="text-indigo-500">Discord</span>{" "}
+            Server
           </DialogTitle>
           <DialogDescription className="text-left text-zinc-500">
             Give Your Server a personality with a name and image. You can change

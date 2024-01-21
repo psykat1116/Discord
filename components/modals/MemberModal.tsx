@@ -97,7 +97,7 @@ const MemberModal = () => {
       <DialogContent className="bg-white dark:bg-[#1e1f22] text-black dark:text-white overflow-hidden">
         <DialogHeader className="pt-4 px-2">
           <DialogTitle className="text-2xl text-left font-bold">
-            <Image
+            <img
               src="/logo.png"
               alt="logo"
               width={50}

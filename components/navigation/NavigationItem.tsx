@@ -40,7 +40,7 @@ const NavigationItem: React.FC<NavigationItemProps> = ({
               "bg-primary/10 text-primary rounded-[16px]"
           )}
         >
-          <Image fill src={imageUrl} alt="Channel" />
+          <img src={imageUrl} alt="Channel" className="object-cover"></img>
         </div>
       </button>
     </ToolTipAction>

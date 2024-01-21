@@ -73,7 +73,7 @@ const ChatItem: React.FC<ChatItemProps> = ({
 
   useEffect(() => {
     form.reset({ content: content });
-  }, [content]);
+  }, [content, form]);
 
   useEffect(() => {
     const handleKeyDOwn = (e: KeyboardEvent) => {
@@ -137,13 +137,12 @@ const ChatItem: React.FC<ChatItemProps> = ({
               href={fileUrl}
               target="_blank"
               rel="noopener noreffer"
-              className="relative aspect-square rounded-md mt-2 overflow-hidden border flex items-center bg-secondary h-48 w-48"
+              className="relative aspect-auto rounded-md mt-2 overflow-hidden border flex items-center bg-secondary h-48 w-48"
             >
-              <Image
+              <img
                 src={fileUrl}
                 alt={content}
-                fill
-                className="object-cover"
+                className="object-cover w-full h-full"
               />
             </a>
           )}

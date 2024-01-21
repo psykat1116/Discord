@@ -49,7 +49,7 @@ const InviteModal = () => {
       <DialogContent className="bg-white dark:bg-[#1e1f22] text-black dark:text-white p-0 overflow-hidden">
         <DialogHeader className="pt-8 px-6">
           <DialogTitle className="text-2xl text-left font-bold">
-            <Image
+            <img
               src="/logo.png"
               alt="logo"
               width={50}

@@ -39,7 +39,7 @@ const InviteBox = ({ profile, serverData }: InviteBoxProps) => {
 
   return (
     <div className="w-full sm:w-[500px] p-5 flex flex-col items-center bg-[#232323] gap-3 rounded-sm shadow-md">
-      <Image
+      <img
         src={serverData?.imageUrl}
         alt={serverData.name}
         height={70}
