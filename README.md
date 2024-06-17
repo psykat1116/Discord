@@ -1,6 +1,6 @@
 <h1>Fullstack Discord Website Clone Made Using Next JS, Tailwind CSS, Typescript, MySQL, Prisma, Shadcn-ui, Clerk, Uploading, Socket IO and Much More. </h1>
 
-<h3>!!! --- As WebSocket does not work on Vercel We Hosted It in <a href="https://railway.app/" target="_blank">Railway</a>. But Next/Image Component Does Not Work In Railway So We Use Native <b>img</b> Tag. --- !!!</h3>
+<h3>!!! --- As WebSocket does not work on Vercel It Will Work in the Polling Method --- !!!</h3>
 
 <h4>Main Project Credit Goes To <a href="https://www.youtube.com/@codewithantonio">Code With Antonio</a>. Great Project Video & Explanation.</h4>
 
@@ -40,7 +40,7 @@ NEXT_PUBLIC_LIVEKIT_URL=
 ```
 
 ## Setup Prisma ORM
-ADD Your MYSQL DataBase URL To env. I use [Planetscale](https://planetscale.com/) as my database.
+[Planetscale](https://planetscale.com/) Remove Its free tire so I shift the database into [MongoDB](https://www.mongodb.com/)
 ```bash
 npx prisma generate
 npx prisma db push
