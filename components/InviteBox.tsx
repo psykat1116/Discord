@@ -1,45 +1,17 @@
 "use client";
-import { db } from "@/lib/db";
 import { Profile, Server } from "@prisma/client";
 import Image from "next/image";
-import { redirect, useParams } from "next/navigation";
 import React from "react";
 
 interface InviteBoxProps {
-  profile: Profile;
   serverData: Server & { profile: Profile };
+  onClick: () => void;
 }
 
-const InviteBox = ({ profile, serverData }: InviteBoxProps) => {
-  const params = useParams();
-  const { inviteCode } = params as { inviteCode: string };
-  const handleClicked = async () => {
-    try {
-      const server = await db.server.update({
-        where: {
-          inviteCode: inviteCode,
-        },
-        data: {
-          members: {
-            create: [
-              {
-                profileId: profile.id,
-              },
-            ],
-          },
-        },
-      });
-      if (server) {
-        return redirect(`/servers/${server.id}`);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
+const InviteBox = ({ serverData, onClick }: InviteBoxProps) => {
   return (
     <div className="w-full sm:w-[500px] p-5 flex flex-col items-center bg-[#232323] gap-3 rounded-sm shadow-md">
-      <img
+      <Image
         src={serverData?.imageUrl}
         alt={serverData.name}
         height={70}
@@ -52,7 +24,7 @@ const InviteBox = ({ profile, serverData }: InviteBoxProps) => {
       <p className="text-2xl mb-3">{serverData.name}</p>
       <button
         className="w-full bg-indigo-500 p-2.5 text-lg rounded-sm"
-        onClick={handleClicked}
+        onClick={onClick}
       >
         Accept Invite
       </button>
